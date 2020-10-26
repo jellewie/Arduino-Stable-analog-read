@@ -1,8 +1,10 @@
 /* Written by JelleWho https://github.com/jellewie */
+#ifndef StableAnalog_h                    //This prevents including this file more than once
+#define StableAnalog_h
+
 #define AverageAmount 16                  //On how much points to take the average from      
 #define AnalogResolution 8                //howmany bits an analog read is
 #define AnalogScaler pow(2,(AnalogResolution - 8))
-
 struct POT {
   byte Value;
   byte Changed;
@@ -57,3 +59,4 @@ class StableAnalog {
       return RV;
     }
 };
+#endif
