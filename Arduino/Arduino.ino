@@ -2,8 +2,8 @@
   Program written by JelleWho https://github.com/jellewie
 */
 
-//#define Button_AverageAmount 16                         //On how much points to take the average from
-//#define Button_AnalogResolution 8                       //Howmany bits an analog read is
+//#define StableAnalog_AverageAmount 16                         //On how much points to take the average from
+//#define StableAnalog_AnalogResolution 8                       //Howmany bits an analog read is
 
 #include "StableAnalog/StableAnalog.h"
 
@@ -12,7 +12,7 @@ StableAnalog PotMeterB = StableAnalog(15);
 
 void setup() {
   Serial.begin(115200);
-  analogReadResolution(Button_AnalogResolution);  //Set Button_AnalogResolution
+  analogReadResolution(StableAnalog_AnalogResolution);  //Set StableAnalog_AnalogResolution
 }
 
 void loop() {

@@ -4,17 +4,17 @@
 #ifndef StableAnalog_h                                  //This prevents including this file more than once
 #define StableAnalog_h
 
-#ifndef Button_AverageAmount
-#define Button_AverageAmount 16                         //On how much points to take the average from
-#endif //Button_AverageAmount
+#ifndef StableAnalog_AverageAmount
+#define StableAnalog_AverageAmount 16                         //On how much points to take the average from
+#endif //StableAnalog_AverageAmount
 
-#ifndef Button_AnalogResolution
-#define Button_AnalogResolution 8                       //Howmany bits an analog read is
-#endif //Button_AnalogResolution
+#ifndef StableAnalog_AnalogResolution
+#define StableAnalog_AnalogResolution 8                       //Howmany bits an analog read is
+#endif //StableAnalog_AnalogResolution
 
-#ifndef Button_AnalogScaler
-#define Button_AnalogScaler pow(2,(Button_AnalogResolution - 8))
-#endif //Button_AnalogScaler
+#ifndef StableAnalog_AnalogScaler
+#define StableAnalog_AnalogScaler pow(2,(StableAnalog_AnalogResolution - 8))
+#endif //StableAnalog_AnalogScaler
 
 struct POT {
   byte Value;
@@ -25,7 +25,7 @@ class StableAnalog {
     byte pin;
     byte Counter;
     int PointTotal;
-    byte Point[Button_AverageAmount];
+    byte Point[StableAnalog_AverageAmount];
     byte Old;
     byte InitCount;                                     //just the counter to block first measurements
 

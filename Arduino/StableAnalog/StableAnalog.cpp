@@ -5,12 +5,12 @@ StableAnalog::StableAnalog(byte _pin) {                 //Must be <class name> t
 }
 byte StableAnalog::Read() {
   PointTotal -= Point[Counter];                         //Remove the old value from the total value
-  Point[Counter] = (analogRead(pin) / Button_AnalogScaler);
+  Point[Counter] = (analogRead(pin) / StableAnalog_AnalogScaler);
   PointTotal += Point[Counter];                         //Add the new value to the total value
   Counter++;
-  if (Counter >= Button_AverageAmount)
+  if (Counter >= StableAnalog_AverageAmount)
     Counter = 0;
-  byte ReturnValue = PointTotal / Button_AverageAmount;
+  byte ReturnValue = PointTotal / StableAnalog_AverageAmount;
   return ReturnValue;
 }
 POT StableAnalog::ReadStable(byte MinChange, byte Stick, byte SkipFirst) {
