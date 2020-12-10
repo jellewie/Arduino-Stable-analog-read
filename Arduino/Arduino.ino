@@ -12,6 +12,7 @@ StableAnalog PotMeterB = StableAnalog(15);
 
 void setup() {
   Serial.begin(115200);
+  analogReadResolution(Button_AnalogResolution);  //Set Button_AnalogResolution
 }
 
 void loop() {
