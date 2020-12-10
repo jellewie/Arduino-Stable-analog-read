@@ -1,10 +1,14 @@
 /*
-  Program written by JelleWho
+  Program written by JelleWho https://github.com/jellewie
 */
-#include "StableAnalog.h"
 
-StableAnalog PotMeterA   = StableAnalog(1); //Declair some variable (in this case PotMeterA) to be at some pin (in this case 1)
-StableAnalog PotMeterB   = StableAnalog(15);
+//#define Button_AverageAmount 16                         //On how much points to take the average from
+//#define Button_AnalogResolution 8                       //Howmany bits an analog read is
+
+#include "StableAnalog/StableAnalog.h"
+
+StableAnalog PotMeterA = StableAnalog(1); //Declair some variable (in this case PotMeterA) to be at some pin (in this case 1)
+StableAnalog PotMeterB = StableAnalog(15);
 
 void setup() {
   Serial.begin(115200);
