@@ -18,11 +18,13 @@ void setup() {
 void loop() {
 
   POT A = PotMeterA.ReadStable(2, 3, 16);
-  //values are as definition ("PotMinChange, PotStick, SkipFirst")
-  //PotMinChange  Howmuch the pot_value needs to change before we process it
-  //PotStick      If this close to HIGH or LOW stick to it
-  //SkipFirst     Skip the first x of measurements, this is so we have proper averages, else if will climb up from 0
-
+  //values are as definition ("PotMinChange, PotStick, SkipFirst, Mode") as described in 'StableAnalog/StableAnalog.cpp' in '*::ReadStable(*){*}'
+  //SkipFirst    Howmany measurements to block on start, so we can read stably, note this only does skip the first x after the first run. never again after that
+  //PotMinChange Howmuch the pot_value needs to change before we process it
+  //PotStick     If this close to HIGH(max) or LOW(min) stick to it
+  //SkipFirst    Skip the first x of measurements, this is so we have proper averages, else if will climb up from 0
+  //Mode         0=analogRead(default)  1=touchRead
+  
   if (A.Changed) {    //If the value has changed (0=FALSE=not changed, and 1>=TRUE=amount of changed)
     Serial.println("Analog read A changed to " + String(A.Value) + " which is a change of " + String(A.Changed));
   }

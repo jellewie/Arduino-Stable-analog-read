@@ -1,5 +1,5 @@
 /* Written by JelleWho https://github.com/jellewie
-  https://github.com/jellewie/Arduino-Stable-analog-read
+   https://github.com/jellewie/Arduino-Stable-analog-read
 */
 #ifndef StableAnalog_h                                  //This prevents including this file more than once
 #define StableAnalog_h
@@ -31,8 +31,8 @@ class StableAnalog {
 
   public:                                               //public variables/functions (these can be acces from the normal sketch)
     StableAnalog(byte _pin);
-	byte Read();
-	POT ReadStable(byte MinChange, byte Stick, byte SkipFirst);
+	byte Read(byte mode = 0);
+	POT ReadStable(byte MinChange = 2, byte Stick = 2, byte SkipFirst = StableAnalog_AverageAmount, byte mode = 0);
 };
 #include "StableAnalog.cpp"
 #endif
