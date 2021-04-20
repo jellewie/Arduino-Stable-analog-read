@@ -4,6 +4,7 @@
 StableAnalog::StableAnalog(byte _pin) {                 //Must be <class name> this is kinda the 'root' function
   this->pin = _pin;                                     //Make a pointer
   pinMode(pin, INPUT);                                  //Set the pin as input
+  analogReadResolution(StableAnalog_AnalogResolution);
 }
 byte StableAnalog::Read(byte Mode) {
   //Returns the average of the last StableAnalog_AverageAmount measurements (where a measurement is a call to this code)
