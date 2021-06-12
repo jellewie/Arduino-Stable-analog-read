@@ -1,0 +1,10 @@
+#====================
+#Don't include files
+#====================
+##Inventor 
+*OldVersions/
+*.lck
+##Output files
+*.bin
+##Local files
+_Local/
