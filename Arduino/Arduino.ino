@@ -3,6 +3,7 @@
 */
 //#define StableAnalog_AverageAmount 16                         //On how much points to take the average from (default=16)
 //#define StableAnalog_AnalogResolution 8                       //Howmany bits an analog read is (default=8 same as default Arduino boards)
+//#define HALLREAD_AUTO_CALIBRATE                               //When in mode 2:hallRead auto_calibrate can be used, note this requires calibration after reboot to set the MAX and MIN values!
 
 #include "StableAnalog/StableAnalog.h"
 
@@ -16,19 +17,18 @@ void setup() {
 
 void loop() {
 
-  POT A = PotMeterA.ReadStable(2, 3);
-  //Values are as definition ("PotMinChange, PotStick, SkipFirst, Mode") as described in 'StableAnalog/StableAnalog.cpp' in '*::ReadStable(*){*}' 
-  //  most have default values, for example you dont need to declare Mode when you don't use it
-  //SkipFirst    Howmany measurements to block on start, so we can read stably, note this only does skip the first x after the first run. never again after that
-  //PotMinChange Howmuch the pot_value needs to change before we process it
-  //PotStick     If this close to HIGH(max) or LOW(min) stick to it
-  //SkipFirst    Skip the first x of measurements, this is so we have proper averages, else if will climb up from 0
-  //Mode         0=analogRead(default)  1=touchRead
-  
+  POT A = PotMeterA.ReadStable();
+  //Values are as definition ("MinChange, Stick, SkipFirst, Mode") as described in 'StableAnalog/StableAnalog.cpp' in '*::ReadStable(*){*}'
+  //  They all have default values so dont need to be declaired.
+  //MinChange   Howmuch the pot_value needs to change before we process it
+  //PotStick    If this close to HIGH(max) or LOW(min) stick to it
+  //SkipFirst   Skip the first x of measurements, this is so we have proper averages, else if will climb up from 0
+  //Mode        0=analogRead(default)  1=touchRead  2=hallRead
+
   if (A.Changed) {                                              //If the value has changed (0=FALSE=not changed, and 1>=TRUE=amount of changed)
     Serial.println("Analog read A changed to " + String(A.Value) + " which is a change of " + String(A.Changed));
   }
-  
+
   POT B = PotMeterA.ReadStable(2, 3, 0);
   if (B.Changed) {                                              //If the value has changed (0=FALSE=not changed, and 1>=TRUE=amount of changed)
     Serial.println("Analog read B changed to " + String(B.Value) + " which is a change of " + String(B.Changed));
